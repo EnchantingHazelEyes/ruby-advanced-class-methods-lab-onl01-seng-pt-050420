@@ -42,9 +42,9 @@ class Song
   end 
   
   def self.new_from_filename(mp3_formatted_file)
-     s = self.new 
-    s.name = mp3_formatted_file.split(/[^a-zA-Z\s]|\s-\s/)[1] 
-    s.artist_name = mp3_formatted_file.split(/[^a-zA-Z\s]|\s-\s/)[0]
+    s = self.new 
+    s.name = (name.split(" - ")[1].chomp(".mp3"))
+    s.artist_name = (name.split(" - ")[0])
     s
   end 
   
