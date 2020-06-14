@@ -22,27 +22,19 @@ class Song
     s
   end 
   
-   def self.create_by_name(string_name_of_song)
+   def self.create_by_name(name)
     s = self.new 
-    s.name = string_name_of_song
+    s.name = name
     s.save
     s 
   end 
   
-  def self.find_by_name(string_name_of_song)
-    self.all.detect{|n| n.name == string_name_of_song}
+  def self.find_by_name(name)
+    self.all.detect{|n| n.name == name}
   end 
   
-    def self.find_or_create_by_name(find_this_song)
-      did_i_find_it = self.all.detect {|n| n.name == find_this_song}
-      if did_i_find_it == nil
-        s = self.new 
-        s.name = find_this_song
-        s.save 
-        s
-      else
-        did_i_find_it
-      end
+    def self.find_or_create_by_name(name)
+    self.find_by_name(name) || self.create_by_name(name)
   end 
   
   def self.alphabetical
